@@ -1,5 +1,22 @@
 # Carrier Command Line Switch
 
+## Background
+
+Upstream services are not always available, but when I was first introduced to this environment the way upstream
+failures were handled was wildly inconsistent and likely left a poor impression of us with our customers.
+
+SQL statement(s) were manually sourced via Confluence, run via your preferred MySQL client, with results recorded for
+running again when the situation resolved itself. The manual effort required meant it was not always run, or timing of
+execution was off by minutes potentially.
+
+This script was the first stage of automation for switching on/off upstream services in our production environment. I
+moved all SQL from Confluence to source control (GitLab) and created this script for execution. Logging (as an audit
+trail), BASH auto completion, and minimal error handling were added as incentive for use. Includes support for both
+vernaculars used within the company: lock/unlock and enable/disable.
+
+The second step in automation was a remote trigger based on New Relic Synthetics alarms - but that won't be covered
+here.
+
 ## Installation
 
 1. Clone the Git repo
